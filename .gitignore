@@ -37,3 +37,6 @@ exampleCPP
 # data files
 *.my
 
+# Directories
+.vscode
+obj
