@@ -1,3 +1,6 @@
+#ifndef PARSE_H
+#define PARSE_H
+
 #include <fstream>
 #include <getopt.h>
 #include <iostream>
@@ -33,3 +36,5 @@ class Parser
         std::string getInputFilePath(void){ return inputFilePath; }
         std::string getOutputFilePath(void){ return outputFilePath; }
 };
+
+#endif /* PARSE_H */
