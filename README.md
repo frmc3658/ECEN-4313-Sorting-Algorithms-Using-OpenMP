@@ -28,7 +28,7 @@ You should submit a link to your final commit to the canvas assignment, followin
 ### Compilation and Execution:
 Your submission should contain a Makefile and the project should build using a single `make` command.  The generated executable should be called `mysort`.  The `mysort` command should have the following syntax  (effectively the same as Lab 1, but with different `--alg` arguments):
 
-`mysort [--name] [source.txt] [-o out.txt] [-t NUMTHREADS]  [--alg=<merge,quick>]`
+`mysort [--name] [-i source.txt] [-o out.txt] [-t NUMTHREADS]  [--alg=<merge,quick>]`
 
 If the `--alg` argument is not provided, you should use the algorithm you have implemented.  If an algorithm is passed which you have not implemented, (e.g. `--alg=merge` when you wrote quicksort) simply print an error message and exit.
 
