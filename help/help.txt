@@ -3,7 +3,7 @@ mysort syntax:
 mysort [--name] [-i sourcefile.txt] [-o outfile.txt] [--alg=<merge, quick>]
 
 --name:
-    Prints author's name
+    Prints author's name and exits
 
 -i:
     Input text file containing the values to sort
@@ -14,7 +14,7 @@ mysort [--name] [-i sourcefile.txt] [-o outfile.txt] [--alg=<merge, quick>]
 --alg
     Algorithm to use
         =merge:
-            Use the merge sort algorithm
+            Use the mergesort algorithm
         =quick
             Use the quicksort algorithm
         

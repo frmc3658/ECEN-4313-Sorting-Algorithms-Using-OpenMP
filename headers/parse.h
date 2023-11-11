@@ -7,6 +7,11 @@
 #include <string>
 #include <vector>
 
+#include "global.h"
+
+#define AUTHOR_NAME     "Frank McDermott\n"
+#define HELP_FILE_PATH  "help/help.txt"
+
 class Parser
 {
     private:
@@ -30,6 +35,7 @@ class Parser
         ~Parser();
 
         void parseInputFile(std::vector<int>*& storage);
+        void writeSortedValues(std::vector<int>*& sortedValues);
 
         // Member acccessor functions
         int getNumThreads(void){ return numThreads; }

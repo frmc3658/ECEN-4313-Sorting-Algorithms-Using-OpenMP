@@ -27,7 +27,30 @@ Parser::~Parser()
 
 void Parser::parseInputFile(std::vector<int>*& storage)
 {
+    storage = new std::vector<int>;
+    std::ifstream file(inputFilePath);
 
+    try
+    {
+        if(!file)
+        {
+            throw std::runtime_error("ERROR: Input File Error\n");
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << "\n";
+        exit(EXIT_FAILURE);
+    }
+    
+    std::string line;
+
+    while(std::getline(file, line))
+    {
+        storage->push_back(std::stoi(line));
+    }
+
+    file.close();
 }
 
 
@@ -95,32 +118,86 @@ void Parser::setNumThreads(int n)
 {   
     
     numThreads = n;
-    std::cout << "Num Threads: " << numThreads << std::endl;
+    DEBUG_PRINT("Num Threads: %s", numThreads);
 }
 
 
 void Parser::setInputPath(std::string path)
 {
     inputFilePath = path;
-    std::cout << "Input File Path: " << inputFilePath << std::endl;
+    DEBUG_PRINT("Input File Path: ", inputFilePath);
 }
 
 
 void Parser::setOutputPath(std::string path)
 {
     outputFilePath = path;
-    std::cout << "Output File Path: " << outputFilePath << std::endl;
+    DEBUG_PRINT("Output File Path: ", outputFilePath);
+}
+
+
+void Parser::writeSortedValues(std::vector<int>*& sortedValues)
+{
+    std::ofstream outFile(outputFilePath);
+
+    try
+    {
+        if(!outFile)
+        {
+            throw std::runtime_error("ERROR: Output File Error\n");
+        }
+        else
+        {
+           DEBUG_PRINT("Writing Sorted Values to: ", outputFilePath);
+
+            for(size_t i = 0; i < sortedValues->size(); i++)
+            {
+                outFile << (*sortedValues)[i] << std::endl;
+            }
+
+            DEBUG_PRINT("Writing Complete!\n");
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << "\n";
+        exit(EXIT_FAILURE);
+    }
+    
+    outFile.close();
 }
 
 
 void Parser::printName(void)
 {
-    std::cout << "Frank McDermott\n";
+    std::cout << AUTHOR_NAME;
 }
 
 
 void Parser::printHelpFile(void)
 {
+    std::ifstream file(HELP_FILE_PATH);
 
+    try
+    {
+        if(!file)
+        {
+            throw std::runtime_error("ERROR: Help File Error\n");
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << "\n";
+        exit(EXIT_FAILURE);
+    }
+    
+    std::string line;
+
+    while(std::getline(file, line))
+    {
+        std::cout << line << std::endl;
+    }
+
+    file.close();
 }
 

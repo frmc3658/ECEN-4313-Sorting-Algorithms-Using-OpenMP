@@ -3,5 +3,6 @@
 
 #include <omp.h>
 #include "parse.h"
+#include "global.h"
 
 #endif /* MAIN_H */

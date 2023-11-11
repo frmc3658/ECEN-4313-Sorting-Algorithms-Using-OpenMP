@@ -10,19 +10,25 @@ int main(int argc, char* argv[])
     parse.parseInputFile(valuesToSort);
 
     // Set the number of theads
-    int tid;
     int numThreads = parse.getNumThreads();
     omp_set_num_threads(numThreads);
 
-    #pragma omp parallel default(shared) private(tid)
+    #pragma omp parallel default(shared)
     {
-        // Get thread ID
-        tid = omp_get_thread_num();
+        // All threads get their own threadID
+        int tid = omp_get_thread_num();
+        DEBUG_PRINT("Thread %d: in parallel section\n", tid);
 
+        // Master thread performs this section
+        #pragma omp master
+        {
+           DEBUG_PRINT("Thread %d: In master section\n", tid);
+        }
         
+        DEBUG_PRINT("Thread %d: Passed Master barrier\n", tid);
     }
 
-
+    
 
     return 0;
 }
