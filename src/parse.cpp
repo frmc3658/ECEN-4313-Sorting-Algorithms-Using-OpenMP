@@ -155,7 +155,7 @@ void Parser::writeSortedValues(std::vector<int>*& sortedValues)
                 outFile << (*sortedValues)[i] << std::endl;
             }
 
-            DEBUG_PRINT("Writing Complete!\n");
+            DEBUG_PRINT("Writing Complete!\n", NULL);
         }
     }
     catch(const std::exception& e)
