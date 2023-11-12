@@ -21,7 +21,7 @@ Parser::Parser(int argc, char* argv[])
 
 Parser::~Parser()
 {
-    
+    delete sortObj;
 }
 
 
@@ -83,22 +83,25 @@ void Parser::parseArgs(int argc, char* argv[])
 
         switch(option)
         {
+            case 'a':
+                setAlgorithm((std::string)optarg);
+                break;
+            case 'h':
+                printHelpFile();
+                exit(EXIT_SUCCESS);
+                break;
             case 'i':
                 setInputPath((std::string)optarg);
+                break;
+            case 'n':
+                printName();
+                exit(EXIT_SUCCESS);
                 break;
             case 'o':
                 setOutputPath((std::string)optarg);
                 break;
             case 't':
                 setNumThreads(std::stoi(optarg));
-                break;
-            case 'h':
-                printHelpFile();
-                exit(EXIT_SUCCESS);
-                break;
-            case 'n':
-                printName();
-                exit(EXIT_SUCCESS);
                 break;
             case '?':
                 try
@@ -134,6 +137,25 @@ void Parser::setOutputPath(std::string path)
 {
     outputFilePath = path;
     DEBUG_PRINT("Set output file path: %s\n", path.c_str());
+}
+
+
+void Parser::setAlgorithm(std::string algRequest)
+{
+    if(algRequest == "quick")
+    {
+        sortObj = new QuickSort();
+    }
+    else if(algRequest == "merge")
+    {
+        sortObj = new MergeSort();
+    }
+    else
+    {
+        sortObj = nullptr;
+        DEBUG_PRINT("%s is not a valid algorithm\n", algRequest.c_str());
+        exit(EXIT_FAILURE);
+    }
 }
 
 

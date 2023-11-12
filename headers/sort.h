@@ -10,7 +10,7 @@ class Sort
 
         // Pure virtual function to make
         // abstract base class
-        virtual void sort() = 0;
+        virtual void sort(void) = 0;
 };
 
 #endif /* SORT_H */

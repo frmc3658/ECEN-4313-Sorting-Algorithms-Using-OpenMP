@@ -8,6 +8,9 @@
 #include <vector>
 
 #include "global.h"
+#include "mergesort.h"
+#include "quicksort.h"
+#include "sort.h"
 
 #define AUTHOR_NAME     "Frank McDermott\n"
 #define HELP_FILE_PATH  "help/help.txt"
@@ -16,6 +19,7 @@
 class Parser
 {
     private:
+        Sort* sortObj;
         std::string inputFilePath;
         std::string outputFilePath;
         int numThreads;
@@ -28,6 +32,7 @@ class Parser
         void setNumThreads(int n);
         void setInputPath(std::string path);
         void setOutputPath(std::string path);
+        void setAlgorithm(std::string algRequest);
         void printName(void);
         void printHelpFile(void);
 
@@ -42,6 +47,7 @@ class Parser
         int getNumThreads(void){ return numThreads; }
         std::string getInputFilePath(void){ return inputFilePath; }
         std::string getOutputFilePath(void){ return outputFilePath; }
+        Sort* getSortObj(void){ return sortObj; }
 };
 
 #endif /* PARSE_H */

@@ -3,7 +3,8 @@
 
 #include <omp.h>
 
-#include "parse.h"
 #include "global.h"
+#include "parse.h"
+#include "timer.h"
 
 #endif /* MAIN_H */
