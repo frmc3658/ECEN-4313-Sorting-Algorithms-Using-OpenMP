@@ -2,6 +2,10 @@
 CC 		= g++
 CFLAGS	= -Wall -Wextra -O3 -g -fopenmp --std=c++2a
 
+ifeq ($(DEBUG), 1)
+    CFLAGS += -DDEBUG
+endif
+
 # Source files
 SRC_DIR     = src
 MAIN_FILE   = main.cpp

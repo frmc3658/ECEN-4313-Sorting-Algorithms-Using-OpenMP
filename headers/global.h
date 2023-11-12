@@ -1,7 +1,8 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-// #define DEBUG
+// Make with DEBUG=1 to compile with DEBUG defined
+// $ make DEBUG=1
 #ifdef DEBUG
     #define DEBUG_PRINT(msg, var)   \
     {                               \

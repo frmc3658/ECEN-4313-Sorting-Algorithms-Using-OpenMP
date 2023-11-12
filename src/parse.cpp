@@ -118,21 +118,21 @@ void Parser::setNumThreads(int n)
 {   
     
     numThreads = n;
-    DEBUG_PRINT("Num Threads: %s", numThreads);
+    DEBUG_PRINT("Set numThreads: %d\n", n);
 }
 
 
 void Parser::setInputPath(std::string path)
 {
     inputFilePath = path;
-    DEBUG_PRINT("Input File Path: ", inputFilePath);
+    DEBUG_PRINT("Set input file path: %s\n", path.c_str());
 }
 
 
 void Parser::setOutputPath(std::string path)
 {
     outputFilePath = path;
-    DEBUG_PRINT("Output File Path: ", outputFilePath);
+    DEBUG_PRINT("Set output file path: %s\n", path.c_str());
 }
 
 
@@ -148,14 +148,10 @@ void Parser::writeSortedValues(std::vector<int>*& sortedValues)
         }
         else
         {
-           DEBUG_PRINT("Writing Sorted Values to: ", outputFilePath);
-
             for(size_t i = 0; i < sortedValues->size(); i++)
             {
                 outFile << (*sortedValues)[i] << std::endl;
             }
-
-            DEBUG_PRINT("Writing Complete!\n", NULL);
         }
     }
     catch(const std::exception& e)
