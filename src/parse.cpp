@@ -34,6 +34,7 @@ void Parser::parseInputFile(std::vector<int>*& storage)
     {
         if(!file)
         {
+            DEBUG_PRINT("Attempted to open input file at: %s", inputFilePath.c_str());
             throw std::runtime_error("ERROR: Input File Error\n");
         }
     }
@@ -76,7 +77,7 @@ void Parser::parseArgs(int argc, char* argv[])
     while(true)
     {
         int optIndex = 0;
-        int option = getopt_long(argc, argv, "i:o:t:", longOptions, &optIndex);
+        int option = getopt_long(argc, argv, SHORT_OPTIONS, longOptions, &optIndex);
 
         if(option == -1){ break; }
 
@@ -144,7 +145,8 @@ void Parser::writeSortedValues(std::vector<int>*& sortedValues)
     {
         if(!outFile)
         {
-            throw std::runtime_error("ERROR: Output File Error\n");
+            DEBUG_PRINT("Attempted to open output file at: %s", outputFilePath.c_str());
+            throw std::runtime_error("ERROR: Error opening output file\n");
         }
         else
         {
@@ -178,7 +180,8 @@ void Parser::printHelpFile(void)
     {
         if(!file)
         {
-            throw std::runtime_error("ERROR: Help File Error\n");
+            DEBUG_PRINT("Attempted to open help file at: %s\n", HELP_FILE_PATH);
+            throw std::runtime_error("ERROR: Error opening help file\n");
         }
     }
     catch(const std::exception& e)

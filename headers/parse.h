@@ -11,6 +11,7 @@
 
 #define AUTHOR_NAME     "Frank McDermott\n"
 #define HELP_FILE_PATH  "help/help.txt"
+#define SHORT_OPTIONS   "i:o:t:"
 
 class Parser
 {

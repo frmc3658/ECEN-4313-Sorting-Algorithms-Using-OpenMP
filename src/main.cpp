@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
     int numThreads = parse.getNumThreads();
     omp_set_num_threads(numThreads);
 
+
     #pragma omp parallel default(shared)
     {
         // All threads get their own threadID
@@ -27,8 +28,6 @@ int main(int argc, char* argv[])
         
         DEBUG_PRINT("Thread %d: Passed Master barrier\n", tid);
     }
-
-    
 
     return 0;
 }
