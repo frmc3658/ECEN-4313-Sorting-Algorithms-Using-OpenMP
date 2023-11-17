@@ -18,8 +18,10 @@ int main(int argc, char* argv[])
 
     #pragma omp parallel default(shared) shared(sorter)
     {
+        #ifdef DEBUG
         // All threads get their own threadID
         int tid = omp_get_thread_num();
+        #endif
 
         // All threads get their own timer object
         // but only master uses it

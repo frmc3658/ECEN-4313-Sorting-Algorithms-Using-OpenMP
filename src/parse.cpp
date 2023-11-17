@@ -76,6 +76,7 @@ void Parser::parseArgs(int argc, char* argv[])
 {
     while(true)
     {
+        algRequested = false;
         int optIndex = 0;
         int option = getopt_long(argc, argv, SHORT_OPTIONS, longOptions, &optIndex);
 
@@ -115,6 +116,12 @@ void Parser::parseArgs(int argc, char* argv[])
                 }
         }
     }
+
+    if(algRequested == false)
+    {
+        setAlgorithm("quick");
+    }
+
 }
 
 
@@ -142,6 +149,8 @@ void Parser::setOutputPath(std::string path)
 
 void Parser::setAlgorithm(std::string algRequest)
 {
+    algRequested = true;
+
     if(algRequest == "quick")
     {
         sortObj = new QuickSort();

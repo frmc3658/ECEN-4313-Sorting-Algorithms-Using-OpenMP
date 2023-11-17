@@ -22,6 +22,7 @@ class Parser
         std::string inputFilePath;
         std::string outputFilePath;
         int numThreads;
+        bool algRequested;
 
         // Validation and argument parsing
         void validateArgc(int argc);
