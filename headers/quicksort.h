@@ -10,7 +10,8 @@ typedef std::pair<int, int> Range;
 class QuickSort : public Sort
 {
     private:
-
+        Range getSortRange(int threadID);
+        int partition(int start, int end);
 
     public:
         QuickSort();
@@ -18,8 +19,6 @@ class QuickSort : public Sort
 
         // Virtual wrapper
         void sort(void) override;
-
-        
 };
 
 #endif /* QUICKSORT_H */

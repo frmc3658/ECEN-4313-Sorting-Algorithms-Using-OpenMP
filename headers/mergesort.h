@@ -2,6 +2,7 @@
 #define MERGESORT_H
 
 #include <algorithm>
+#include <omp.h>
 
 #include "sort.h"
 

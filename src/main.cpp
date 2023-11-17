@@ -2,8 +2,6 @@
 
 int main(int argc, char* argv[])
 {
-    Sort* sortObj;
-
     // Parse command line arguments
     Parser parse(argc, argv);
 
@@ -15,15 +13,17 @@ int main(int argc, char* argv[])
     int numThreads = parse.getNumThreads();
     omp_set_num_threads(numThreads);
 
-    // Initialize timer
-    Timer timer;
+    Sort* sorter = parse.getSortObj();
+    sorter->setValues(valuesToSort);
 
-
-    #pragma omp parallel default(shared) private(timer)
+    #pragma omp parallel default(shared) shared(sorter)
     {
         // All threads get their own threadID
         int tid = omp_get_thread_num();
-        DEBUG_PRINT("Thread %d: in parallel section\n", tid);
+
+        // All threads get their own timer object
+        // but only master uses it
+        Timer timer;
 
         // Have the master thread start the timer
         #pragma omp master
@@ -36,16 +36,27 @@ int main(int argc, char* argv[])
         // Adding one here for synchronization
         #pragma omp barrier
 
+        // Call sorting algorithm
+        sorter->sort();
+
+        // Synchronization barrier post-sorting
+        #pragma omp barrier
 
         // Have the master thread stop the timer
         #pragma omp master
         {
+            // Final sort
             DEBUG_PRINT("Thread %d: Stopping timer\n", tid);
             timer.setEndTime();
+
+            // Calculate and print timing
+            timer.calculateRuntime();
+            timer.printRuntime();
         }
     }
-
-
+    
+    valuesToSort = sorter->getValues();
+    parse.writeSortedValues(valuesToSort);
 
     return 0;
 }

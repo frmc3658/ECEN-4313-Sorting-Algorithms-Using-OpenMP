@@ -10,7 +10,6 @@
 #include "global.h"
 #include "mergesort.h"
 #include "quicksort.h"
-#include "sort.h"
 
 #define AUTHOR_NAME     "Frank McDermott\n"
 #define HELP_FILE_PATH  "help/help.txt"

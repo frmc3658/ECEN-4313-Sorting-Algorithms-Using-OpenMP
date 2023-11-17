@@ -2,8 +2,7 @@
 CC      = g++
 CFLAGS  = -Wall -Wextra -O3 -g -fopenmp --std=c++2a
 
-# Optional DEBUG compiler flag from compiling with
-# debugging code:
+# Optional DEBUG compiler flag for compiling with debugging code:
 # $ make DEBUG=1
 ifeq ($(DEBUG), 1)
     CFLAGS += -DDEBUG
