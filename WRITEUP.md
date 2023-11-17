@@ -1,5 +1,4 @@
-## Lab 3: OpenMP ##
-### Frank McDermott ###
+## Lab 3: OpenMP - Frank McDermott ##
 
 #### Ease of Implementation ####
 Compared to pthreads, OpenMP is much easier to implement. OpenMP abstracts away the whole fork/join process, which is mostly a quality of life improvment over pthreads as it abstracts away the handling of threads and function pointers and allows the programmer to focus more on worksharing paradigms. Another positive with Openmp is not having to worry about synchronize-with or consisency models.
