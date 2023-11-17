@@ -34,7 +34,7 @@ void Parser::parseInputFile(std::vector<int>*& storage)
     {
         if(!file)
         {
-            DEBUG_PRINT("Attempted to open input file at: %s", inputFilePath.c_str());
+            DEBUG_PRINT("Attempted to open input file at: %s\n", inputFilePath.c_str());
             throw std::runtime_error("ERROR: Input File Error\n");
         }
     }

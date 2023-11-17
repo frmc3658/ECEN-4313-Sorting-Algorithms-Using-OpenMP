@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
     int numThreads = parse.getNumThreads();
     omp_set_num_threads(numThreads);
 
+    // Set the sort vector
     Sort* sorter = parse.getSortObj();
     sorter->setValues(valuesToSort);
 
@@ -58,6 +59,7 @@ int main(int argc, char* argv[])
         #pragma omp barrier
     }
     
+    // Write the values to the output file
     valuesToSort = sorter->getValues();
     parse.writeSortedValues(valuesToSort);
 
