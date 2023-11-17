@@ -10,10 +10,11 @@ typedef std::pair<int, int> Range;
 class QuickSort : public Sort
 {
     private:
-        bool mergeStep = false;
+        std::vector<Range> sortRanges;
 
-        Range getSortRange(int threadID);
+        Range getThreadSortRange(int threadID);
         int partition(int start, int end);
+        void merge(void);
 
     public:
         QuickSort();

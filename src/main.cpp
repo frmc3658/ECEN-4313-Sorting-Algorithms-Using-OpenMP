@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 
         // Have the master thread start the timer
         #pragma omp master
-        {
+        {   
             DEBUG_PRINT("Thread %d: Starting timer\n", tid);
             timer.setStartTime();
         }
@@ -47,7 +47,6 @@ int main(int argc, char* argv[])
         // Have the master thread stop the timer
         #pragma omp master
         {
-            
             DEBUG_PRINT("Thread %d: Stopping timer\n", tid);
             timer.setEndTime();
 
