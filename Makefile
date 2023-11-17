@@ -26,6 +26,10 @@ FILES_DIR   = files
 SORTED_DIR	= sorted
 ANS_FILES   = $(wildcard $(SORTED_DIR)/*.ans)
 
+# Autograde files
+AUTOGRADE_DIR       = autograde_tests
+AUTOGRADE_TESTS     = $(wildcard $(AUTOGRADE_DIR)/*.my)
+
 # Output executable name
 EXECUTABLE = mysort
 
@@ -36,6 +40,7 @@ ifeq ($(OS), Windows_NT)
     RM_EXECUTABLE_EXTENSION     = .exe
     RM_OBJ_FILES                = $(subst /, \, $(OBJ_FILES))
     RM_ANS_FILES                = $(subst /, \, $(ANS_FILES))
+    RM_AG_FILES                 = $(subst /, \, $(AUTOGRADE_TESTS))
     RMDIR                       = rmdir /S /Q
     MKDIR                       = mkdir
 else
@@ -44,6 +49,7 @@ else
     RM_EXECUTABLE_EXTENSION     = ""
     RM_OBJ_FILES                = $(OBJ_FILES)
     RM_ANS_FILES                = $(ANS_FILES)
+    RM_AG_FILES                 = $(AUTOGRADE_TESTS)
     RMDIR                       = rm -rf
     MKDIR                       = mkdir
 endif
@@ -73,7 +79,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEADER_FILES) | $(OBJ_DIR)
 clean:
 	$(RM) $(RM_OBJ_FILES) $(EXECUTABLE)$(RM_EXECUTABLE_EXTENSION)
 	$(RMDIR) $(OBJ_DIR)
-	
+	$(RM) $(AUTOGRADE_TESTS)
 
 clean-ans-only:
 	$(RM) $(ANS_FILES)
