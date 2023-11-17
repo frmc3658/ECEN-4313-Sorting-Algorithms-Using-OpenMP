@@ -9,7 +9,6 @@ My lab1 and lab3 implementations are kind of an apples-to-oranges comparison (as
 
 **pthread Quicksort**
 
-|-----------------------------------------------------------------------------------------------------------------------|
 | Num Threads   | Runtime (ns)  |   Runtime (s)     | L1 cache miss (%)| Branch Pred Miss Rate (%)| Page Fault Count (#)|
 |---------------|---------------|-------------------|------------------|--------------------------|---------------------|
 | 1             |   14919148972 |       14.9        |       0.384 %    |        0.02%             |         948         |
@@ -22,13 +21,12 @@ My lab1 and lab3 implementations are kind of an apples-to-oranges comparison (as
 | 8             |   3758937187  |       3.7         |       1.319 %    |        0.10%             |         967         |
 | 9             |   3492135849  |       3.4         |       1.600 %    |        0.11%             |         975         |
 | 10            |   3167000720  |       3.1         |       1.608 %    |        0.12%             |         979         |
-|-----------------------------------------------------------------------------------------------------------------------|
+
 
 
 
 **OpenMP Quicksort**
 
-|-----------------------------------------------------------------------------------------------------------------------|
 | Num Threads   | Runtime (ns)  |   Runtime (s)     | L1 cache miss (%)| Branch Pred Miss Rate (%)| Page Fault Count (#)|
 |---------------|-------------- |-------------------|------------------|--------------------------|---------------------|
 | 1             |   32952835926 |       32.9        |       0.214 %    |        0.01%             |         1,257       |
@@ -41,7 +39,7 @@ My lab1 and lab3 implementations are kind of an apples-to-oranges comparison (as
 | 8             |   4223445802  |       4.2         |       1.122 %    |        0.08%             |         1,280       |
 | 9             |   4003656506  |       4.0         |       1.261 %    |        0.09%             |         1,281       |
 | 10            |   3325376828  |       3.3         |       1.283 %    |        0.11%             |         1,283       |
-|-----------------------------------------------------------------------------------------------------------------------|
+
 
 Having done some `perf` analysis on both sets of code:
 `pthreads` is less efficient in terms of L1 cache and branch prediction hit rate, while being approximately 25% more efficient in terms of page fault count.
