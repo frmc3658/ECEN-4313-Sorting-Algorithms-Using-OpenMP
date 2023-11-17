@@ -7,8 +7,8 @@ Compared to pthreads, OpenMP is much easier to implement. OpenMP abstracts away 
 #### Performance ####
 My lab1 and lab3 implementations are kind of an apples-to-oranges comparison (as far as design implementation is concerned), but the sorting algorithm code is the same. OpenMp is significantly slower (relatively speaking) than my pthread fork/join implementation of quicksort.
 
-|-----------------------------------------------------------------------------------------------------------------------|
-|                                                   **pthread Quicksort**                                               |
+**pthread Quicksort**
+
 |-----------------------------------------------------------------------------------------------------------------------|
 | Num Threads   | Runtime (ns)  |   Runtime (s)     | L1 cache miss (%)| Branch Pred Miss Rate (%)| Page Fault Count (#)|
 |---------------|---------------|-------------------|------------------|--------------------------|---------------------|
@@ -25,9 +25,9 @@ My lab1 and lab3 implementations are kind of an apples-to-oranges comparison (as
 |-----------------------------------------------------------------------------------------------------------------------|
 
 
-|-----------------------------------------------------------------------------------------------------------------------|
-|                                                   **OpenMP Quicksort**                                                |
-|-----------------------------------------------------------------------------------------------------------------------|
+
+**OpenMP Quicksort**
+
 |-----------------------------------------------------------------------------------------------------------------------|
 | Num Threads   | Runtime (ns)  |   Runtime (s)     | L1 cache miss (%)| Branch Pred Miss Rate (%)| Page Fault Count (#)|
 |---------------|-------------- |-------------------|------------------|--------------------------|---------------------|
