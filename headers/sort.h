@@ -19,6 +19,7 @@ class Sort
 
         // Accessor functions
         inline std::vector<int>* getValues(void) const { return values; }
+        inline size_t getSize(void) const { return values->size(); }
 
         // Modifier functions
         inline void setValues(std::vector<int>*& vect){ values = new std::vector<int>(*vect); }

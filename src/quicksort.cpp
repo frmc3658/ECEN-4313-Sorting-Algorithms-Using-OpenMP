@@ -22,6 +22,7 @@ void QuickSort::sort(void)
 
     DEBUG_PRINT("QuickSort: Sort Called by Thread%d\n", tid);
     Range range = getSortRange(tid);
+    DEBUG_PRINT("Thread%d: Range = [%d - %d]\n", tid, range.first, range.second);
 
     int start = range.first;
     int end = range.second;
@@ -69,14 +70,16 @@ Range QuickSort::getSortRange(int threadID)
 {
     // Calculate number of elements to assign to range
     int numValues = values->size();
-    int numElements = numValues / (omp_get_num_threads() + 1);
+    int numThreads = omp_get_num_threads();
+    int numElements = (numValues + numThreads) / (numThreads + 1);
+
 
     // Calculate starting point of range (inclusive)
     int startIndex = threadID * numElements;
     
     // Calculate endpoint of range (inclusive)
     int endIndex;
-    if(threadID == 0){ endIndex = numValues - 1; }
+    if(threadID == numThreads - 1){ endIndex = numValues - 1; }
     else{ endIndex = ((threadID + 1) * numElements) - 1; }
     
 

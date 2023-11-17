@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
         // Have the master thread stop the timer
         #pragma omp master
         {
-            // Final sort
+            
             DEBUG_PRINT("Thread %d: Stopping timer\n", tid);
             timer.setEndTime();
 
@@ -55,6 +55,8 @@ int main(int argc, char* argv[])
             timer.calculateRuntime();
             timer.printRuntime();
         }
+
+        #pragma omp barrier
     }
     
     valuesToSort = sorter->getValues();
